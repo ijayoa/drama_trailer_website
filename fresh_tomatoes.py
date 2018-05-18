@@ -9,16 +9,33 @@ main_page_head = '''
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Fresh Tomatoes!</title>
+    <title>DramaPan</title>
 
     <!-- Bootstrap 3 -->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <!-- Raleway google font -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:200,400" rel="stylesheet">
     <style type="text/css" media="screen">
         body {
             padding-top: 80px;
+            background: #1D1D1D;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 200;
+        }
+        .navbar {
+            border: 0px;
+            background: transparent;
+        }
+        .navbar-brand {
+            color:#fff;
+        }
+        .drama-title {
+            color: #1d1d1d;
+            font-size: 20px;
+            font-weight: 400;
         }
         #trailer .modal-dialog {
             margin-top: 200px;
@@ -39,9 +56,15 @@ main_page_head = '''
             margin-bottom: 20px;
             padding-top: 20px;
         }
-        .movie-tile:hover {
-            background-color: #EEE;
+        .box {
+            background: #fafafa;
+            padding: 20px;
+            border-radius: 2px;
+            background: #fff;
+        }
+        .box:hover{
             cursor: pointer;
+            background:#f7f7f7;
         }
         .scale-media {
             padding-bottom: 56.25%;
@@ -104,10 +127,10 @@ main_page_content = '''
 
     <!-- Main Page Content -->
     <div class="container">
-      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="navbar" role="navigation">
         <div class="container">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a>
+            <a class="navbar-brand" href="#">DramaPan - Browse Korean TV Dramas</a>
           </div>
         </div>
       </div>
@@ -123,8 +146,15 @@ main_page_content = '''
 # A single movie entry html template
 movie_tile_content = '''
 <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
-    <img src="{poster_image_url}" width="220" height="342">
-    <h2>{movie_title}</h2>
+    <div class="box">
+    <img src="{poster_image_url}" width="180" height="302">
+    <div class="info">
+    <h2 class="text-left drama-title ">{movie_title}</h2>
+    <p class="text-left">Synopsis : {description}</p>
+    <p class="text-left">Episodes : {episodes}</p>
+    <p class="text-left">Year Released: {year}</p>
+    </div>
+    </div>
 </div>
 '''
 
@@ -145,14 +175,17 @@ def create_movie_tiles_content(movies):
         content += movie_tile_content.format(
             movie_title=movie.title,
             poster_image_url=movie.poster_image_url,
-            trailer_youtube_id=trailer_youtube_id
+            trailer_youtube_id=trailer_youtube_id,
+            description=movie.drama_description,
+            episodes=movie.episodes,
+            year=movie.year_released
         )
     return content
 
 
 def open_movies_page(movies):
     # Create or overwrite the output file
-    output_file = open('fresh_tomatoes.html', 'w')
+    output_file = open('drama_pan.html', 'w')
 
     # Replace the movie tiles placeholder generated content
     rendered_content = main_page_content.format(

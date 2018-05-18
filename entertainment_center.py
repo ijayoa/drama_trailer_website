@@ -6,7 +6,7 @@ waikiki = media.Drama("Euchalala Waikiki",
                       "A korean comedy drama about six friends living in a"
                       " guest house.",
                       "http://asianwiki.com/images/b/bc/Eulachacha_Waikiki-P3.jpg",  # NOQA
-                      "https://www.youtube.com/watch?v=h-5HhJJLlUk",
+                      "https://www.youtube.com/watch?v=us3qfAc88w8",
                       2018, 20)
 
 # create new instance
