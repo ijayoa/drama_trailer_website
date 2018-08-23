@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>DramaPan</title>
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"> # NOQA
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <!-- Raleway google font -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:200,400" rel="stylesheet">
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 80px;
+            background: #1D1D1D;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 200;
+        }
+        .navbar {
+            border: 0px;
+            background: transparent;
+        }
+        .navbar-brand {
+            color:#fff;
+        }
+        .drama-title {
+            color: #1d1d1d;
+            font-size: 20px;
+            font-weight: 400;
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .movie-tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+        }
+        .box {
+            background: #fafafa;
+            padding: 20px;
+            border-radius: 2px;
+            background: #fff;
+        }
+        .box:hover{
+            cursor: pointer;
+            background:#f7f7f7;
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/> # NOQA
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">DramaPan - Browse Korean TV Dramas</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      
+<div class="col-md-6 col-lg-4 movie-tile text-center"
+data-trailer-youtube-id="arBRqNeesCY"
+data-toggle="modal"
+data-target="#trailer">
+    <div class="box">
+    <img src="https://bit.ly/2rKklx2" width="180" height="302">
+    <div class="info">
+    <h2 class="text-left drama-title ">Chief Kim</h2>
+    <p class="text-left">Synopsis : A former accountant for gangs begin to work at a huge company by chance.</p>
+    <p class="text-left">Episodes : 20</p>
+    <p class="text-left">Year Released: 2017</p>
+    </div>
+    </div>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"
+data-trailer-youtube-id="WFLuToc4Xek"
+data-toggle="modal"
+data-target="#trailer">
+    <div class="box">
+    <img src="http://asianwiki.com/images/a/ae/Voice_%28Korean_Drama%29-p1.jpg" width="180" height="302">
+    <div class="info">
+    <h2 class="text-left drama-title ">Voice</h2>
+    <p class="text-left">Synopsis : A detective and a voice profiler work together to catch a serial killer.</p>
+    <p class="text-left">Episodes : 16</p>
+    <p class="text-left">Year Released: 2017</p>
+    </div>
+    </div>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"
+data-trailer-youtube-id="nGyMJU8zTjc"
+data-toggle="modal"
+data-target="#trailer">
+    <div class="box">
+    <img src="http://asianwiki.com/images/5/5d/Because_This_Is_My_First_Life-P1.jpg" width="180" height="302">
+    <div class="info">
+    <h2 class="text-left drama-title ">Because This Is My First Life</h2>
+    <p class="text-left">Synopsis : Two people choose to marry purely out of material benefit but end up in love.</p>
+    <p class="text-left">Episodes : 16</p>
+    <p class="text-left">Year Released: 2017</p>
+    </div>
+    </div>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"
+data-trailer-youtube-id="4JQoEw97sPI"
+data-toggle="modal"
+data-target="#trailer">
+    <div class="box">
+    <img src="http://asianwiki.com/images/9/91/Black_%28Korean_Drama%29-P1.jpg" width="180" height="302">
+    <div class="info">
+    <h2 class="text-left drama-title ">Black</h2>
+    <p class="text-left">Synopsis : Black is a detective possessed by the Grim Reaper. Ha-Ram can see shadows of death.</p>
+    <p class="text-left">Episodes : 18</p>
+    <p class="text-left">Year Released: 2017</p>
+    </div>
+    </div>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"
+data-trailer-youtube-id="U2UrxFwMORE"
+data-toggle="modal"
+data-target="#trailer">
+    <div class="box">
+    <img src="http://asianwiki.com/images/b/b2/Goblin-p04.jpg" width="180" height="302">
+    <div class="info">
+    <h2 class="text-left drama-title ">Goblin</h2>
+    <p class="text-left">Synopsis : A story of a god who waited 900 years for a human bride to end his immortal life.</p>
+    <p class="text-left">Episodes : 16</p>
+    <p class="text-left">Year Released: 2017</p>
+    </div>
+    </div>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"
+data-trailer-youtube-id="1ccGurkcYcs"
+data-toggle="modal"
+data-target="#trailer">
+    <div class="box">
+    <img src="https://www.hancinema.net/photos/fullsizephoto971910.jpg" width="180" height="302">
+    <div class="info">
+    <h2 class="text-left drama-title ">Wok Of Love</h2>
+    <p class="text-left">Synopsis : A chef falls to the bottom in his career and struggles to rise again.</p>
+    <p class="text-left">Episodes : 40</p>
+    <p class="text-left">Year Released: 2018</p>
+    </div>
+    </div>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"
+data-trailer-youtube-id="0HHy5nIxLFw"
+data-toggle="modal"
+data-target="#trailer">
+    <div class="box">
+    <img src="http://asianwiki.com/images/f/ff/Jealousy_Incarnate-p1.jpg" width="180" height="302">
+    <div class="info">
+    <h2 class="text-left drama-title ">Jealousy Incarnate</h2>
+    <p class="text-left">Synopsis : A man develops breast cancer and finds love in the end.</p>
+    <p class="text-left">Episodes : 24</p>
+    <p class="text-left">Year Released: 2016</p>
+    </div>
+    </div>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"
+data-trailer-youtube-id="us3qfAc88w8"
+data-toggle="modal"
+data-target="#trailer">
+    <div class="box">
+    <img src="http://asianwiki.com/images/b/bc/Eulachacha_Waikiki-P3.jpg" width="180" height="302">
+    <div class="info">
+    <h2 class="text-left drama-title ">Euchalala Waikiki</h2>
+    <p class="text-left">Synopsis : A korean comedy drama about six friends living in a guest house.</p>
+    <p class="text-left">Episodes : 20</p>
+    <p class="text-left">Year Released: 2018</p>
+    </div>
+    </div>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"
+data-trailer-youtube-id="J7SGe0FXIEI"
+data-toggle="modal"
+data-target="#trailer">
+    <div class="box">
+    <img src="https://bit.ly/2IJNXW5" width="180" height="302">
+    <div class="info">
+    <h2 class="text-left drama-title ">Father Is Strange</h2>
+    <p class="text-left">Synopsis : A man falsely charged with murder is forced to impersonate his dead friend.</p>
+    <p class="text-left">Episodes : 52</p>
+    <p class="text-left">Year Released: 2017</p>
+    </div>
+    </div>
+</div>
+
+    </div>
+  </body>
+</html>
